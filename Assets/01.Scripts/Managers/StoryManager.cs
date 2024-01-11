@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace Crogen.BishojyoGraph
 {
-    public class StoryManager : MonoSingleton<StoryManager>
+    public class StoryManager : MonoBehaviour
     {
         //Controllers
         public CharacterController CharacterController { get; private set; }
@@ -18,6 +18,8 @@ namespace Crogen.BishojyoGraph
         public TextController TextController { get; private set; }
         public BishojyoDataController BishojyoDataController { get; private set; }
 
+        public static StoryManager Instance;
+        
         private void Init()
         {
             CharacterController = FindObjectOfType<CharacterController>();
@@ -28,6 +30,11 @@ namespace Crogen.BishojyoGraph
 
         private void Awake()
         {
+            if (Instance == null)
+                Instance = this;
+            else
+                Destroy(gameObject);
+            
             Init();
         }
 

@@ -6,10 +6,13 @@ using UnityEngine;
 public class LineController : MonoBehaviour
 {
     [SerializeField] private Transform[] stagePoint;
+    
+    //Components
     private LineRenderer _lineRenderer;
     
     void Awake()
     {
+        //Components
         _lineRenderer = GetComponent<LineRenderer>();
 
         LoadLine();
@@ -22,11 +25,5 @@ public class LineController : MonoBehaviour
         {
             _lineRenderer.SetPosition(i, stagePoint[i].position);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
