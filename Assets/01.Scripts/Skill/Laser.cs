@@ -7,13 +7,8 @@ public class Laser : Skill
     [SerializeField] private float _speed = 15;
     [SerializeField] private int _laserCount = 4;
     
-    //Managements
-    private GameManager _gameManager;
-    
     public override void Init()
     {
-        _gameManager = GameManager.Instance;
-
         StartCoroutine(ShootingLaser());
     }
 
