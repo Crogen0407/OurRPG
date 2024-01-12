@@ -4894,7 +4894,6 @@ GameObject:
   - component: {fileID: 2639271019374023710}
   - component: {fileID: 2639271019374023713}
   - component: {fileID: 2639271019374023708}
-  - component: {fileID: 3250148889080671786}
   m_Layer: 0
   m_Name: vfx_Healing
   m_TagString: Untagged
@@ -9746,19 +9745,6 @@ MonoBehaviour:
     perlinColor: 1
     perlinColorSpeed: 2
   fadeOutReference: {fileID: 2639271019374023713}
---- !u!114 &3250148889080671786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2639271019374023712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ba7b84688fae840ad64c055143d837, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _duration: 10
 --- !u!1 &9167111738884752432
 GameObject:
   m_ObjectHideFlags: 0

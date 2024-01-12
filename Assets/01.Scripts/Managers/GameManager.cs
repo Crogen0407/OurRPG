@@ -5,15 +5,14 @@ using UnityEngine;
 public class GameManager : MonoSingletonOneScene<GameManager>
 {
     public bool isGameOver;
+
+    public PlayerMovement PlayerMovement { get; private set; }
+    public HealthSystem PlayerHealthSystem { get; private set; }
     
+
     void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        PlayerMovement = FindObjectOfType<PlayerMovement>();
+        PlayerHealthSystem = PlayerMovement.GetComponent<HealthSystem>();
     }
 }

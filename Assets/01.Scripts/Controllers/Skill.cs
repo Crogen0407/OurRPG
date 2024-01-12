@@ -5,7 +5,6 @@ public delegate void OnEnableSkill();
 
 public abstract class Skill : MonoBehaviour
 {
-    public string type;
     public int level;
     public float delayTime = 0.1f;
 

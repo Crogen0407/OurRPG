@@ -9,7 +9,6 @@ public class GeneralSwordAttack : Skill
     {
         OnEnableSkill = () =>
         {
-           Debug.Log("djdjd");
            GameObject obj = Instantiate(_skillEffect, PlayerMovement.PlayerPosition, Quaternion.identity);
            obj.transform.up = -PlayerAttackDirection.Direction;
         };

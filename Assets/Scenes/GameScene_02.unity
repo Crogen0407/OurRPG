@@ -1178,7 +1178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b6b538ba828e79479e725631f6d8139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
   level: 0
   delayTime: 1
   _skillEffect: {fileID: 6710139492206580332, guid: 95b8d3d65b5d7f1409c4ed1723887826, type: 3}
@@ -1272,9 +1271,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fe7992d42d47084581783680584620d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
   level: 0
-  delayTime: 0.1
+  delayTime: 2
+  _skillEffect: {fileID: 2639271019374023712, guid: 0cc492bd0dd331846a12e69c0281c3c8, type: 3}
 --- !u!1 &730055308
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,6 +2013,7 @@ GameObject:
   - component: {fileID: 1246140291}
   - component: {fileID: 1246140293}
   - component: {fileID: 1246140294}
+  - component: {fileID: 1246140295}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2155,6 +2155,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skills:
   - {fileID: 618499464}
+--- !u!114 &1246140295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246140288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdd77e1e4949ad34cb351780792e881f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 100
 --- !u!1 &1280766431
 GameObject:
   m_ObjectHideFlags: 0
