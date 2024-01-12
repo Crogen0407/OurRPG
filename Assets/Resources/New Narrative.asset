@@ -80,19 +80,6 @@ MonoBehaviour:
           m_PersistentCalls:
             m_Calls: []
     Position: {x: 1072, y: 200}
-  - GUID: 2745c7aa-454b-479f-ad03-1d2e6886018a
-    Slide:
-      currentCharacter: <user>
-      characterState: 0
-      text: "\uC0B4\uB808\uC5D0\uC11C \uACA8\uC6B0 \uD0C8\uCD9C\uD55C\uAC70\uC57C"
-      slideEvent:
-        onSlideEnable:
-          m_PersistentCalls:
-            m_Calls: []
-        onSlideDisable:
-          m_PersistentCalls:
-            m_Calls: []
-    Position: {x: 1411, y: 200}
   - GUID: 2d324495-8a43-41bf-b94b-d833243507d8
     Slide:
       currentCharacter: "\uC2DC\uB85C\uCF54"
@@ -106,19 +93,6 @@ MonoBehaviour:
           m_PersistentCalls:
             m_Calls: []
     Position: {x: 1753, y: 273}
-  - GUID: afaddafe-53bf-42d8-9fc5-d229a65810a2
-    Slide:
-      currentCharacter: <user>
-      characterState: 0
-      text: "\uC640~\uC2DC\uB85C\uCF54\uAC00 \uB180\uC544\uC900\uB2F9"
-      slideEvent:
-        onSlideEnable:
-          m_PersistentCalls:
-            m_Calls: []
-        onSlideDisable:
-          m_PersistentCalls:
-            m_Calls: []
-    Position: {x: 2488, y: 127}
   - GUID: cc0238fe-d084-4bfc-ab4a-b0f32dd2696f
     Slide:
       currentCharacter: "\uC2DC\uB85C\uCF54"
@@ -146,4 +120,30 @@ MonoBehaviour:
           m_PersistentCalls:
             m_Calls: []
     Position: {x: 2033, y: 29}
+  - GUID: 2745c7aa-454b-479f-ad03-1d2e6886018a
+    Slide:
+      currentCharacter: <user>
+      characterState: 0
+      text: "\uC0B4\uB808\uC5D0\uC11C \uACA8\uC6B0 \uD0C8\uCD9C\uD55C\uAC70\uC57C"
+      slideEvent:
+        onSlideEnable:
+          m_PersistentCalls:
+            m_Calls: []
+        onSlideDisable:
+          m_PersistentCalls:
+            m_Calls: []
+    Position: {x: 1411, y: 200}
+  - GUID: afaddafe-53bf-42d8-9fc5-d229a65810a2
+    Slide:
+      currentCharacter: <user>
+      characterState: 0
+      text: "\uC640~\uC2DC\uB85C\uCF54\uAC00 \uB180\uC544\uC900\uB2F9"
+      slideEvent:
+        onSlideEnable:
+          m_PersistentCalls:
+            m_Calls: []
+        onSlideDisable:
+          m_PersistentCalls:
+            m_Calls: []
+    Position: {x: 2455, y: 273}
   ExposedProperties: []

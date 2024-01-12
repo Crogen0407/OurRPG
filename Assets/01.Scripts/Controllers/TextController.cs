@@ -25,7 +25,7 @@ public class TextController : MonoBehaviour
     //Managers
     private StoryManager _storyManager;
     
-    private void Awake()
+    private void Start()
     {
         _storyManager = StoryManager.Instance;
         _bishojyoDataController = _storyManager.BishojyoDataController;

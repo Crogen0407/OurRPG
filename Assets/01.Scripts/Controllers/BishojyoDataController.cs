@@ -152,7 +152,6 @@ public class BishojyoDataController : MonoBehaviour
                 if (nodeLinkData.TargetNodeGUID == choiceGUID[i])
                 {
                     nodeLinkDatas.Add(nodeLinkData);
-                    Debug.Log(nodeLinkData.PortName);
                     break;
                 }
             }

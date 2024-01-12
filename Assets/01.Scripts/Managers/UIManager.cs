@@ -14,14 +14,16 @@ public class UIManager : MonoSingletonOneScene<UIManager>
         set
         {
             _isBaseEnable = value;
+            float posY = 0;
             if (_isBaseEnable == true)
             {
-                Tweening.Instance.DOMove(_baseTransform, new Vector3(0, 40, 0), 1, EasingType.EaseInSine);
+                posY = 40;
             }
             else
             {
-                Tweening.Instance.DOMove(_baseTransform, new Vector3(0, -612, 0), 1, EasingType.EaseInSine);
+                posY = -612;
             }
+            Tweening.Instance.DOMove(_baseTransform, new Vector3(0, posY, 0), 0.5f, EasingType.EaseInOutSine);
         }
     }
     void Start()
