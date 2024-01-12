@@ -25,7 +25,7 @@ public class Healing : Skill
     {
         for (int i = 0; i < 5; i++)
         {
-            yield return new WaitForSeconds(delayTime);
+            yield return new WaitForSeconds(2);
             _gameManager.PlayerHealthSystem.Hp++;
         }
         yield return new WaitForSeconds(delayTime);
