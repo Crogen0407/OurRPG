@@ -9,13 +9,16 @@ public class PlayerMovement : MonoBehaviour
     private float _horizontal, _vertical;
 
     [SerializeField] private float _speed = 5;
-    
+
+    public static Vector3 PlayerPosition { get; private set; }
+
     //Components
     private Rigidbody2D _rigidbody;
     
-    void Start()
+    void Awake()
     {
-        
+        //Components
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
@@ -29,6 +32,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        
+        PlayerPosition = transform.position;
     }
 }
