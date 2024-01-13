@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(HealthSystem))]
 public abstract class Enemy : MonoBehaviour
 {
     public float moveSpeed = 8;
@@ -11,19 +13,22 @@ public abstract class Enemy : MonoBehaviour
     
     //Components
     protected HealthSystem healthSystem;
+    private CircleCollider2D _circleCollider2D;
     private Rigidbody2D _rigidbody;
     
     private void OnEnable()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _circleCollider2D = GetComponent<CircleCollider2D>();
         healthSystem = GetComponent<HealthSystem>();
         Init();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Vector2 dir = (PlayerMovement.PlayerPosition - transform.position).normalized;
         float distance = Vector2.Distance(PlayerMovement.PlayerPosition, transform.position);
+
         if (distance > intersection)
         {
             _rigidbody.velocity = dir * moveSpeed;
