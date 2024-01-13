@@ -20,6 +20,9 @@ public class GameManager : MonoSingletonOneScene<GameManager>
             }
         }
     }
+
+    public bool timeClear;
+    
     
     private bool _gameOver;
     public bool GameOver

@@ -19,7 +19,7 @@ public class EnemySpawnController : MonoBehaviour
     }
 
     [SerializeField] private TextMeshProUGUI _timeText;
-    
+    [SerializeField] private Transform _enemySpawnTransform;
     
     //Managements
     private GameManager _gameManager;
@@ -35,8 +35,23 @@ public class EnemySpawnController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    private void FixedUpdate()
+    {
+        MoveSpawnTransform();
+    }
+
     void Update()
+    {
+        TimeChange();
+    }
+
+    private void MoveSpawnTransform()
+    {
+        Vector3 vec = new Vector3(_enemySpawnTransform.position.x, _enemySpawnTransform.position.y, 0);
+        _enemySpawnTransform.position = vec;
+    }
+
+    private void TimeChange()
     {
         if (CurrentTime > 0)
         {
@@ -45,9 +60,8 @@ public class EnemySpawnController : MonoBehaviour
         else
         {
             CurrentTime = 0;
-            _gameManager.GameClear = true;
+            _gameManager.timeClear = true;
         }
     }
-    
     
 }
