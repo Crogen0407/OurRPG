@@ -17,4 +17,9 @@ public abstract class Skill : MonoBehaviour
         Init();
         OnEnableSkill?.Invoke();
     }
+    
+    public float EaseInCirc(float x)
+    {
+        return 1 - Mathf.Sqrt(1f - Mathf.Pow(x, 2));
+    }
 }

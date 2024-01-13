@@ -10,6 +10,7 @@ public class GeneralMagicball : Skill
     {
         GameObject obj = Instantiate(_skillEffect, PlayerMovement.PlayerPosition, Quaternion.identity);
         obj.transform.up = PlayerAttackDirection.Direction;
+        obj.transform.localScale += Vector3.one * EaseInCirc(level / 5f);
         obj.GetComponent<Rigidbody2D>().velocity = obj.transform.up * _speed;
     }
 }

@@ -26,7 +26,7 @@ public class Healing : Skill
         for (int i = 0; i < 5; i++)
         {
             yield return new WaitForSeconds(2);
-            _gameManager.PlayerHealthSystem.Hp++;
+            _gameManager.PlayerHealthSystem.Hp+=level;
         }
         yield return new WaitForSeconds(delayTime);
         Destroy(destroyGameObject);        

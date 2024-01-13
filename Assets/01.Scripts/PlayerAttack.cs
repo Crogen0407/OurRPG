@@ -32,7 +32,10 @@ public class PlayerAttack : MonoBehaviour
         {
             skills[skillIndex].gameObject.SetActive(false);
             yield return new WaitForSeconds(skillDelayTime[skillIndex]);
-            skills[skillIndex].gameObject.SetActive(true);
+            if (skills[skillIndex].level > 0)
+            {
+                skills[skillIndex].gameObject.SetActive(true);
+            }
         }
     }
 }

@@ -5,21 +5,20 @@ public class Laser : Skill
 {
     [SerializeField] private GameObject _skillEffect;
     [SerializeField] private float _speed = 15;
-    [SerializeField] private int _laserCount = 4;
     
     public override void Init()
     {
-        StartCoroutine(ShootingLaser());
-    }
+        GameObject firstObj = Instantiate(_skillEffect, PlayerMovement.PlayerPosition, Quaternion.identity);
+        firstObj.transform.up = (PlayerAttackDirection.Direction);
+        firstObj.GetComponent<Rigidbody2D>().velocity = firstObj.transform.up * _speed;
 
-    private IEnumerator ShootingLaser()
-    {
-        for (int i = 0; i < _laserCount; i++)
+        for (int i = 0; i < level -1 ; i++)
         {
-            yield return new WaitForSeconds(0.5f);
+            Debug.Log("발사");
             GameObject obj = Instantiate(_skillEffect, PlayerMovement.PlayerPosition, Quaternion.identity);
-            obj.transform.up = PlayerAttackDirection.Direction;
+            Vector2 randomVec = new Vector2(Random.Range(-2, 2f), Random.Range(-2, 2f));
+            obj.transform.up = (PlayerAttackDirection.Direction + randomVec).normalized;
             obj.GetComponent<Rigidbody2D>().velocity = obj.transform.up * _speed;
-        }
+        }    
     }
 }
