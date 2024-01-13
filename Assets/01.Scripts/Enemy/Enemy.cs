@@ -13,13 +13,11 @@ public abstract class Enemy : MonoBehaviour
     
     //Components
     protected HealthSystem healthSystem;
-    private CircleCollider2D _circleCollider2D;
     private Rigidbody2D _rigidbody;
     
     private void OnEnable()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _circleCollider2D = GetComponent<CircleCollider2D>();
         healthSystem = GetComponent<HealthSystem>();
         Init();
     }
