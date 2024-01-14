@@ -5223,6 +5223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54624f7c4cdef24da8b20b744c8aade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: Mushroom
   moveSpeed: 1.1
   intersection: 0.9
   damage: 1
@@ -5276,7 +5277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd77e1e4949ad34cb351780792e881f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 100
+  _hp: 2
 --- !u!1 &7417901660631284830
 GameObject:
   m_ObjectHideFlags: 0

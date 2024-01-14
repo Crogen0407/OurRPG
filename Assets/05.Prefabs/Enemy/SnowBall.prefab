@@ -135,7 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54624f7c4cdef24da8b20b744c8aade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.1
+  enemyType: SnowBall
+  moveSpeed: 0.9
   intersection: 0.9
   damage: 1
   _snowEffect: {fileID: 4943977857068747034, guid: 268156d079cf3b0458d4debe9d486bfc, type: 3}
@@ -188,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd77e1e4949ad34cb351780792e881f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 100
+  _hp: 4
 --- !u!1 &821893355112825258
 GameObject:
   m_ObjectHideFlags: 0

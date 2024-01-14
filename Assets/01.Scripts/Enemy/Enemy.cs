@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(HealthSystem))]
 public abstract class Enemy : MonoBehaviour
 {
+    public string enemyType;
     public float moveSpeed = 8;
     public float intersection = 0.5f;
     public float damage = 1f;
@@ -15,10 +16,18 @@ public abstract class Enemy : MonoBehaviour
     protected HealthSystem healthSystem;
     private Rigidbody2D _rigidbody;
     
+    //Managements
+    protected PoolManager _poolManager;
+    
     private void OnEnable()
     {
+        _poolManager = PoolManager.Instance;
         _rigidbody = GetComponent<Rigidbody2D>();
         healthSystem = GetComponent<HealthSystem>();
+        healthSystem.OnDieEvent = () =>
+        {
+            _poolManager.Push(enemyType, gameObject);
+        };
         Init();
     }
 
@@ -38,6 +47,10 @@ public abstract class Enemy : MonoBehaviour
         if (other.transform.CompareTag("Player"))
         {
             other.GetComponent<HealthSystem>().Hp -= damage;
+        }
+        else if (other.transform.CompareTag("PlayerAttack"))
+        {
+            healthSystem.Hp--;
         }
     }
 

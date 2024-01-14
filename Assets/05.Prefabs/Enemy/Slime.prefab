@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96f2c8a7dfb048d4d9dd349cdfebc176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: Slime
   moveSpeed: 1
   intersection: 0.9
   damage: 1
@@ -430,4 +431,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd77e1e4949ad34cb351780792e881f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 100
+  _hp: 2

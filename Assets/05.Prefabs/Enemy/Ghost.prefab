@@ -378,7 +378,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3d22a095a9b0e4f95ee25537ab9410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  enemyType: Ghost
+  moveSpeed: 2
   intersection: 1
   damage: 1
 --- !u!58 &2539881875781183187
@@ -430,4 +431,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd77e1e4949ad34cb351780792e881f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 100
+  _hp: 2
