@@ -15,19 +15,32 @@ public class PlayerMovement : MonoBehaviour
     //Components
     private Rigidbody2D _rigidbody;
     
+    //Managements
+    private GameManager _gameManager;
+    
     void Awake()
     {
         //Components
         _rigidbody = GetComponent<Rigidbody2D>();
+        
+        //Managements
+        _gameManager = GameManager.Instance;
     }
 
     private void FixedUpdate()
     {
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
-
         Vector2 dir = new Vector2(_horizontal, _vertical).normalized;
-        _rigidbody.velocity = dir * _speed;
+        if ((_gameManager.GameOver || _gameManager.GameClear || _gameManager.timeClear) == false)
+        {
+            _rigidbody.velocity = dir * _speed;
+        }
+        else
+        {
+            _rigidbody.velocity = Vector2.zero;
+        }
+
     }
 
     void Update()

@@ -10,7 +10,6 @@ public class SnowBall : Enemy
     
     //Managements
     private GameManager _gameManager;
-    private PoolManager _poolManager;
     
     protected override void Init()
     {

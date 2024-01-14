@@ -28,7 +28,7 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator UseSkill(int skillIndex)
     {
-        while (_gameManager.GameOver == false)
+        while ((_gameManager.GameOver || _gameManager.GameClear || _gameManager.timeClear) == false)
         {
             skills[skillIndex].gameObject.SetActive(false);
             yield return new WaitForSeconds(skillDelayTime[skillIndex]);
