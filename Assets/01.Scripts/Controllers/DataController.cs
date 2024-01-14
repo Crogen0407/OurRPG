@@ -7,6 +7,7 @@ public class DataController : MonoBehaviour
     private SaveData _saveData;
     private string _filePath;
     private string _jsonData;
+    
     private void Awake()
     {
         _filePath = Application.persistentDataPath + "/SaveData.json";
