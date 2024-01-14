@@ -395,7 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: Slime
-  moveSpeed: 1
+  moveSpeed: 2
   intersection: 0.9
   damage: 1
   damagedMaterial: {fileID: 2100000, guid: 742e13cec39b23242bb33a1f6a960ed4, type: 2}

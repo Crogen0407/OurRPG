@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Crogen.BishojyoGraph.SlideEffect;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -23,7 +24,6 @@ public class GameManager : MonoSingletonOneScene<GameManager>
 
     public bool timeClear;
     
-    
     private bool _gameOver;
     public bool GameOver
     {
@@ -33,11 +33,14 @@ public class GameManager : MonoSingletonOneScene<GameManager>
             _gameOver = value;
             if (_gameOver == true)
             {
-                SceneManager.LoadScene("StageChoiceScene");
+                BishojyoSlideEffectController.Instance.Fade(false, 5, () =>
+                {
+                    SetTimeScale(0);
+                });
+                //SceneManager.LoadScene("StageChoiceScene");
             }
         }
     }
-    
     
     public PlayerMovement PlayerMovement { get; private set; }
     public HealthSystem PlayerHealthSystem { get; private set; }
@@ -45,6 +48,7 @@ public class GameManager : MonoSingletonOneScene<GameManager>
 
     void Awake()
     {
+        SetTimeScale(10);
         PlayerMovement = FindObjectOfType<PlayerMovement>();
         PlayerHealthSystem = PlayerMovement.GetComponent<HealthSystem>();
     }

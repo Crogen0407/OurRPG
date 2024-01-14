@@ -27,6 +27,10 @@ public class Player : MonoBehaviour
             StopCoroutine(DamagedCoroutine());
             StartCoroutine(DamagedCoroutine());
         };
+        HealthSystem.OnDieEvent = () =>
+        {
+            GameManager.Instance.GameOver = true;
+        };
     }
 
     private IEnumerator DamagedCoroutine()
