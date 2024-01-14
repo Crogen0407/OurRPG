@@ -379,9 +379,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: Ghost
-  moveSpeed: 2
+  moveSpeed: 3
   intersection: 1
   damage: 1
+  damagedMaterial: {fileID: 2100000, guid: 742e13cec39b23242bb33a1f6a960ed4, type: 2}
 --- !u!58 &2539881875781183187
 CircleCollider2D:
   m_ObjectHideFlags: 0

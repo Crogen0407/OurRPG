@@ -11,22 +11,36 @@ public abstract class Enemy : MonoBehaviour
     public float moveSpeed = 8;
     public float intersection = 0.5f;
     public float damage = 1f;
-    
+    public Material damagedMaterial;
+    private Material _defaultMaterial;
+
     //Components
     protected HealthSystem healthSystem;
     private Rigidbody2D _rigidbody;
-    
+    private SpriteRenderer _spriteRenderer;
+
     //Managements
     protected PoolManager _poolManager;
     
     private void OnEnable()
     {
-        _poolManager = PoolManager.Instance;
+        //Components
         _rigidbody = GetComponent<Rigidbody2D>();
         healthSystem = GetComponent<HealthSystem>();
+        _spriteRenderer = transform.Find("Visual").GetComponent<SpriteRenderer>();
+
+        //Managements
+        _poolManager = PoolManager.Instance;
+        
+        _defaultMaterial = _spriteRenderer.material;
+        
         healthSystem.OnDieEvent = () =>
         {
             _poolManager.Push(enemyType, gameObject);
+        };
+        healthSystem.OnHpDownEvent = () =>
+        {
+            StartCoroutine(DamagedCoroutine());
         };
         Init();
     }
@@ -52,6 +66,13 @@ public abstract class Enemy : MonoBehaviour
         {
             healthSystem.Hp--;
         }
+    }
+    
+    private IEnumerator DamagedCoroutine()
+    {
+        _spriteRenderer.material = damagedMaterial;
+        yield return new WaitForSeconds(0.1f);
+        _spriteRenderer.material = _defaultMaterial;
     }
 
     protected abstract void Init();
