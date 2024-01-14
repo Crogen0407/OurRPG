@@ -42,7 +42,7 @@ public class EnemySpawnController : MonoBehaviour
         _gameManager = GameManager.Instance;
         _poolManager = PoolManager.Instance;
      
-        _gameManager.SetTimeScale(5);
+        _gameManager.SetTimeScale(2);
         CurrentTime = _maxTime;
         _spawnDelay = ((int)_maxTime / 60) + 1;
     }
