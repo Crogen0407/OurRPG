@@ -14,11 +14,13 @@ public class EnemySpawnController : MonoBehaviour
         get => _currentTime;
         set
         {
-            _currentTime = value;
-            if ((int)_currentTime % 60 == 0)
+            if ((int)_currentTime / 60 != (int)value / 60)
             {
                 _spawnDelay--;
             }
+            
+            _currentTime = value;
+            
             _timeText.text = $"{((int)_currentTime / 60).ToString("00")} : {((int)_currentTime % 60).ToString("00")}";
         }
     }
@@ -39,7 +41,8 @@ public class EnemySpawnController : MonoBehaviour
         _spawnPoints = _enemySpawnTransform.GetComponentsInChildren<Transform>();
         _gameManager = GameManager.Instance;
         _poolManager = PoolManager.Instance;
-        
+     
+        _gameManager.SetTimeScale(5);
         CurrentTime = _maxTime;
         _spawnDelay = ((int)_maxTime / 60) + 1;
     }

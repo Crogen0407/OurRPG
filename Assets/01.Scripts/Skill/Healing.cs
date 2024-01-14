@@ -13,12 +13,16 @@ public class Healing : Skill
     {
         _gameManager = GameManager.Instance;
         
-        OnEnableSkill = () =>
+        GameObject obj = Instantiate(_skillEffect, PlayerMovement.PlayerPosition, Quaternion.identity);
+        obj.transform.parent = _gameManager.PlayerMovement.transform;
+        EffectDeath effectDeath = obj.GetComponent<EffectDeath>();
+        effectDeath.OnLastingEvent = () =>
         {
-            GameObject obj = Instantiate(_skillEffect, PlayerMovement.PlayerPosition, Quaternion.identity);
-            obj.transform.parent = _gameManager.PlayerMovement.transform;
-            StartCoroutine(HealingCoroutine(obj));
+            _gameManager.PlayerHealthSystem.Hp+=level;
         };
+        effectDeath.loopCount = 5;
+        effectDeath.delayTime = 2;
+        effectDeath.waitingTime = 0;
     }
 
     private IEnumerator HealingCoroutine(GameObject destroyGameObject)

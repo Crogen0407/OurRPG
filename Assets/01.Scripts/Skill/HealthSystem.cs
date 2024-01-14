@@ -20,20 +20,23 @@ public class HealthSystem : MonoBehaviour
         get => _hp;
         set
         {
-            if (_hp > value)
+            if (gameObject.activeSelf == true)
             {
-                OnHpDownEvent?.Invoke();
-            }
-            else if(_hp < value)
-            {
-                OnHpUpEvent?.Invoke();
-            }
+                if (_hp > value)
+                {
+                    OnHpDownEvent?.Invoke();
+                }
+                else if(_hp < value)
+                {
+                    OnHpUpEvent?.Invoke();
+                }
             
-            _hp = value;
-            if (_hp <= 0.05f)
-            {
-                _hp = 0;
-                OnDieEvent?.Invoke();
+                _hp = value;
+                if (_hp <= 0.05f)
+                {
+                    _hp = 0;
+                    OnDieEvent?.Invoke();
+                }                
             }
         }
     }

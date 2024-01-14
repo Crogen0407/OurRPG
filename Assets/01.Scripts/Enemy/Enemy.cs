@@ -13,12 +13,14 @@ public abstract class Enemy : MonoBehaviour
     public float damage = 1f;
     public Material damagedMaterial;
     private Material _defaultMaterial;
+    private int _hp;
 
     //Components
     protected HealthSystem healthSystem;
+    private HealthSystem _defaultHealthSystem;
     private Rigidbody2D _rigidbody;
     private SpriteRenderer _spriteRenderer;
-
+        
     //Managements
     protected PoolManager _poolManager;
     
@@ -29,6 +31,13 @@ public abstract class Enemy : MonoBehaviour
         healthSystem = GetComponent<HealthSystem>();
         _spriteRenderer = transform.Find("Visual").GetComponent<SpriteRenderer>();
 
+        if (_defaultHealthSystem == null)
+            _defaultHealthSystem = healthSystem;
+        else
+        {
+            healthSystem.Hp = _defaultHealthSystem.Hp;
+        }
+            
         //Managements
         _poolManager = PoolManager.Instance;
         
@@ -36,10 +45,12 @@ public abstract class Enemy : MonoBehaviour
         
         healthSystem.OnDieEvent = () =>
         {
+            StopCoroutine(DamagedCoroutine());
             _poolManager.Push(enemyType, gameObject);
         };
         healthSystem.OnHpDownEvent = () =>
         {
+            StopCoroutine(DamagedCoroutine());
             StartCoroutine(DamagedCoroutine());
         };
         Init();
