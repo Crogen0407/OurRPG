@@ -14,7 +14,8 @@ public abstract class Enemy : MonoBehaviour
     public Material damagedMaterial;
     private Material _defaultMaterial;
     private int _hp;
-
+    [SerializeField] private GameObject dieEffect;
+    
     //Components
     protected HealthSystem healthSystem;
     private HealthSystem _defaultHealthSystem;
@@ -47,6 +48,10 @@ public abstract class Enemy : MonoBehaviour
         {
             StopCoroutine(DamagedCoroutine());
             _poolManager.Push(enemyType, gameObject);
+            if (dieEffect != null)
+            {
+                Instantiate(dieEffect, transform.position, Quaternion.identity);
+            }
         };
         healthSystem.OnHpDownEvent = () =>
         {
