@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemySpawnController : MonoBehaviour
 {
@@ -20,14 +21,20 @@ public class EnemySpawnController : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _timeText;
     [SerializeField] private Transform _enemySpawnTransform;
+    private Transform[] _spawnPoints;
+
+    [Space] [SerializeField] private string[] _enemies;
     
     //Managements
     private GameManager _gameManager;
+    private PoolManager _poolManager;
     
     private void Awake()
     {
         _gameManager = GameManager.Instance;
+        _poolManager = PoolManager.Instance;
         CurrentTime = _maxTime;
+        _spawnPoints = _enemySpawnTransform.GetComponentsInChildren<Transform>();
     }
 
     void Start()
@@ -51,6 +58,13 @@ public class EnemySpawnController : MonoBehaviour
         _enemySpawnTransform.position = vec;
     }
 
+    private void SpawnEnemy()
+    {
+        int randomPos = Random.Range(1, _spawnPoints.Length);
+        int randomEnemy = Random.Range(0, _enemies.Length);
+        _poolManager.Pop(_enemies[randomEnemy], _spawnPoints[randomPos].position, Quaternion.identity);
+    }
+    
     private void TimeChange()
     {
         if (CurrentTime > 0)
@@ -63,5 +77,4 @@ public class EnemySpawnController : MonoBehaviour
             _gameManager.timeClear = true;
         }
     }
-    
 }

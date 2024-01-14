@@ -48,4 +48,9 @@ public class GameManager : MonoSingletonOneScene<GameManager>
         PlayerMovement = FindObjectOfType<PlayerMovement>();
         PlayerHealthSystem = PlayerMovement.GetComponent<HealthSystem>();
     }
+
+    public void SetTimeScale(int value)
+    {
+        Time.timeScale = value;
+    }
 }

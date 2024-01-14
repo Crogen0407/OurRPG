@@ -16,3 +16,15 @@ MonoBehaviour:
   - prefabTypeName: vfx_Snow
     prefab: {fileID: 4943977857068747034, guid: 268156d079cf3b0458d4debe9d486bfc, type: 3}
     poolCount: 50
+  - prefabTypeName: Ghost
+    prefab: {fileID: 2539881875781183186, guid: 3f7594a86ed9e5e40b7ace4e24059b81, type: 3}
+    poolCount: 50
+  - prefabTypeName: Mushroom
+    prefab: {fileID: 7417901660321214375, guid: 4ab876e3f0a1e0c428b735c3c31f1161, type: 3}
+    poolCount: 50
+  - prefabTypeName: Slime
+    prefab: {fileID: 7208979091598129396, guid: 67b7932be6a930a44860d7b68b767d97, type: 3}
+    poolCount: 50
+  - prefabTypeName: SnowBall
+    prefab: {fileID: 821893354838688569, guid: 46abbda228a1eaf4a96bd6fd20a6ebc8, type: 3}
+    poolCount: 50
