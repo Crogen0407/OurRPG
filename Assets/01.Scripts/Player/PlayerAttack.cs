@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -37,5 +38,10 @@ public class PlayerAttack : MonoBehaviour
                 skills[skillIndex].gameObject.SetActive(true);
             }
         }
+    }
+
+    public Skill GetRandomLevelUpSkill()
+    {
+        return skills[Random.Range(0, skills.Count)];
     }
 }

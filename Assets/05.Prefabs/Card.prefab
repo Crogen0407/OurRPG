@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: d3de42b4067e05b45a37ce4d1547c892, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -141,15 +141,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
+  m_Color: {r: 0.8490566, g: 0.8136709, b: 0.76495194, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 54fac8b23e955b9449ac60a68a784d2e, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.1
 --- !u!114 &7772387110374760406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBCF8\uC88C\uB294 \uC8C4\uC778\uC5D0\uAC8C \n\uC8FD\uC74C\uC744 \uD5C8\uB77D\uD55C\uB2E4"
+  m_text: "\uD30C\uC774\uC5B4\uBCFC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83285f092dad7c54daae5b36eb5624ed, type: 2}
   m_sharedMaterial: {fileID: 6513991305350286818, guid: 83285f092dad7c54daae5b36eb5624ed, type: 2}
@@ -440,11 +440,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC655\uC758 \uBC1C\uBC0F\uC5D0 \uCC9C\uD558\uAC00 \uC788\uACE0 \uCC9C\uD558\uB294
-    \uBAA8\uB4E0 \uAC83\uC744 \uC2EC\uD310\uD55C\uB2E4.\n\n\uB9CC\uBC31\uC131\uC774\uC5EC,
-    \uB450\uB824\uC6CC\uD558\uBA70 \uB098\uC758 \uBA85\uC131\uACFC \uC774\uB984\uC744
-    \uCE6D\uC1A1\uD558\uAC70\uB77C...\n\n\uBCF8\uC88C\uAC00 \uBC95\uC774\uACE0 \uB9CC\uBB3C\uC758
-    \uADFC\uC6D0\uC77C\uC9C0\uB2C8..."
+  m_text: "\uC0AC\uBC29\uC73C\uB85C \uD30C\uC774\uC5B4\uBCFC\uC744 \uB0A0\uB9B0\uB2E4.\n\n\uBD88\uC7A5\uB09C\uD558\uBA74
+    \uBC24\uC5D0 \uC624\uC90C \uC9C0\uB9B4 \uC218 \uC788\uC73C\uB2C8\uAE4C \uC870\uC2EC!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83285f092dad7c54daae5b36eb5624ed, type: 2}
   m_sharedMaterial: {fileID: 6513991305350286818, guid: 83285f092dad7c54daae5b36eb5624ed, type: 2}
@@ -478,7 +475,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0

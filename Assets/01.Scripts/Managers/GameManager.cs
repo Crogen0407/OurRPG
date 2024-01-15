@@ -67,26 +67,31 @@ public class GameManager : MonoSingletonOneScene<GameManager>
             DataController.Save(_saveData);
         }
     }
+
     
+    //Components
+    public PlayerMovement PlayerMovement { get; private set; }
+    public HealthSystem PlayerHealthSystem { get; private set; }
+    public PlayerAttack PlayerAttack { get; private set; }
+
     //Controllers
     public DataController DataController { get; private set; }
     public EnemySpawnController EnemySpawnController { get; private set; }
 
-
-    public PlayerMovement PlayerMovement { get; private set; }
-    public HealthSystem PlayerHealthSystem { get; private set; }
     
 
     void Awake()
     {
         SetTimeScale(10);
-        PlayerMovement = FindObjectOfType<PlayerMovement>();
-        PlayerHealthSystem = PlayerMovement.GetComponent<HealthSystem>();
-        
+            
         //Controllers
         DataController = FindObjectOfType<DataController>();
         EnemySpawnController = FindObjectOfType<EnemySpawnController>();
-
+    
+        //Components
+        PlayerMovement = FindObjectOfType<PlayerMovement>();
+        PlayerHealthSystem = PlayerMovement.GetComponent<HealthSystem>();
+        PlayerAttack = PlayerMovement.GetComponent<PlayerAttack>();
     }
 
     public void CheckGameClear()

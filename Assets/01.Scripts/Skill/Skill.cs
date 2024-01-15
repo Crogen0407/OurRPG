@@ -23,6 +23,11 @@ public abstract class Skill : MonoBehaviour
     {
         return 1 - Mathf.Sqrt(1f - Mathf.Pow(x, 2));
     }
+
+    public void LevelUp(int value)
+    {
+        level += value;
+    }
 }
 
 
