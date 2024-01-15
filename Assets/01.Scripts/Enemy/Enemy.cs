@@ -18,40 +18,50 @@ public abstract class Enemy : MonoBehaviour
     
     //Components
     protected HealthSystem healthSystem;
-    private HealthSystem _defaultHealthSystem;
+    private float _defaultHp = 0.0f;
     private Rigidbody2D _rigidbody;
     private SpriteRenderer _spriteRenderer;
+    
+    //Controllers
+    private EnemySpawnController _enemySpawnController;
         
     //Managements
     protected PoolManager _poolManager;
+    protected GameManager _gameManager;
     
     private void OnEnable()
     {
+        //Managements
+        _poolManager = PoolManager.Instance;
+        _gameManager = GameManager.Instance;
+        
+        //Controllers
+        _enemySpawnController = _gameManager.EnemySpawnController;
+        
         //Components
         _rigidbody = GetComponent<Rigidbody2D>();
         healthSystem = GetComponent<HealthSystem>();
         _spriteRenderer = transform.Find("Visual").GetComponent<SpriteRenderer>();
 
-        if (_defaultHealthSystem == null)
-            _defaultHealthSystem = healthSystem;
+        if (_defaultHp == 0.0f)
+            _defaultHp = healthSystem.Hp;
         else
         {
-            healthSystem.Hp = _defaultHealthSystem.Hp;
+            healthSystem.Hp = _defaultHp;
         }
             
-        //Managements
-        _poolManager = PoolManager.Instance;
-        
         _defaultMaterial = _spriteRenderer.material;
         
         healthSystem.OnDieEvent = () =>
         {
+            _enemySpawnController.currentEnemies.Remove(this);
             StopCoroutine(DamagedCoroutine());
-            _poolManager.Push(enemyType, gameObject);
             if (dieEffect != null)
             {
                 Instantiate(dieEffect, transform.position, Quaternion.identity);
             }
+            _poolManager.Push(enemyType, gameObject);
+            _gameManager.CheckGameClear();
         };
         healthSystem.OnHpDownEvent = () =>
         {

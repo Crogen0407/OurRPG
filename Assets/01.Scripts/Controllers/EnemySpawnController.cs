@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawnController : MonoBehaviour
 {
-    [SerializeField] private float _maxTime = 300;
+    private float _maxTime = 300;
     private float _currentTime;
     public float CurrentTime
     {
@@ -29,9 +29,13 @@ public class EnemySpawnController : MonoBehaviour
     [SerializeField] private Transform _enemySpawnTransform;
     [SerializeField ]private Transform[] _spawnPoints;
 
-    [Space] [SerializeField] private string[] _enemies;
+    [Space] [SerializeField] private string[] _enemyTypes;
     [SerializeField] private float _spawnDelay = 5;
 
+    //Data
+    private SO_StageData _stageData;
+    public List<Enemy> currentEnemies;
+    
     //Managements
     private GameManager _gameManager;
     private PoolManager _poolManager;
@@ -42,7 +46,9 @@ public class EnemySpawnController : MonoBehaviour
         _gameManager = GameManager.Instance;
         _poolManager = PoolManager.Instance;
      
-        _gameManager.SetTimeScale(2);
+        //Data
+        _stageData = _gameManager.stageData;
+        _maxTime = _stageData.survivalTimes[_stageData.currentStateIndex];
         CurrentTime = _maxTime;
         _spawnDelay = ((int)_maxTime / 60) + 1;
     }
@@ -71,8 +77,9 @@ public class EnemySpawnController : MonoBehaviour
     private void SpawnEnemy()
     {
         int randomPos = Random.Range(1, _spawnPoints.Length);
-        int randomEnemy = Random.Range(0, _enemies.Length);
-        _poolManager.Pop(_enemies[randomEnemy], _spawnPoints[randomPos].position, Quaternion.identity);
+        int randomEnemy = Random.Range(0, _enemyTypes.Length);
+        GameObject obj = _poolManager.Pop(_enemyTypes[randomEnemy], _spawnPoints[randomPos].position, Quaternion.identity);
+        currentEnemies.Add(obj.GetComponent<Enemy>());
     }
     private void TimeChange()
     {
