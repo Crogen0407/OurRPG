@@ -33,10 +33,7 @@ public class GameManager : MonoSingletonOneScene<GameManager>
             _gameOver = value;
             if (_gameOver == true)
             {
-                BishojyoSlideEffectController.Instance.Fade(false, 5, () =>
-                {
-                    SetTimeScale(0);
-                });
+                GameScene_UIManager.Instance.ShowGameOverPanel();
                 //SceneManager.LoadScene("StageChoiceScene");
             }
         }

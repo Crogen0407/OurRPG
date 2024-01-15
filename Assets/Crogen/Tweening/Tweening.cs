@@ -14,9 +14,9 @@ namespace Crogen.Tweening
             {
                 StartCoroutine(Move(transform, endPoint, duration, easing, lateCoroutine));
             }
-            public void DOMove(RectTransform rectTransform, Vector3 endPoint, float duration, EasingType easing, IEnumerator lateCoroutine = null)
+            public void DOMove(RectTransform rectTransform, Vector3 endPoint, float duration, EasingType easing, IEnumerator lateCoroutine = null, Action lateAction = null)
             {
-                StartCoroutine(Move(rectTransform, endPoint, duration, easing, lateCoroutine));
+                StartCoroutine(Move(rectTransform, endPoint, duration, easing, lateCoroutine, lateAction));
             }
             public void DOMove(Rigidbody rigidbody, Vector3 endPoint, float duration, EasingType easing, IEnumerator lateCoroutine)
             {
@@ -38,13 +38,14 @@ namespace Crogen.Tweening
                     yield return null;
                 }
                 transform.localPosition = endPoint;
+                yield return new WaitForSeconds(duration);
 
                 if (lateCoroutine != null)
                 {
                     yield return StartCoroutine(lateCoroutine);
                 }
             }
-            private IEnumerator Move(RectTransform rectTransform, Vector3 endPoint, float duration, EasingType easing, IEnumerator lateCoroutine = null)
+            private IEnumerator Move(RectTransform rectTransform, Vector3 endPoint, float duration, EasingType easing, IEnumerator lateCoroutine = null, Action lateAction = null)
             {
                 float currentTime = 0;
                 float percentTime = 0;
@@ -59,11 +60,15 @@ namespace Crogen.Tweening
                     yield return null;
                 }
                 rectTransform.anchoredPosition = endPoint;
+                yield return new WaitForSeconds(duration);
+                lateAction?.Invoke();
+
                 if (lateCoroutine != null)
                 {
                     yield return StartCoroutine(lateCoroutine);
                 }
             }
+
             private IEnumerator Move(Rigidbody rigidbody, Vector3 endPoint, float duration, EasingType easing, IEnumerator lateCoroutine = null)
             {
                 float currentTime = 0;
@@ -79,7 +84,7 @@ namespace Crogen.Tweening
                     yield return null;
                 }
                 rigidbody.position = endPoint;
-
+                yield return new WaitForSeconds(duration);
                 if (lateCoroutine != null)
                 {
                     yield return StartCoroutine(lateCoroutine);

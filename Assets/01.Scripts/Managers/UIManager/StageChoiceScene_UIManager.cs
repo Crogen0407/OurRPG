@@ -26,10 +26,6 @@ public class StageChoiceScene_UIManager : MonoSingletonOneScene<StageChoiceScene
             Tweening.Instance.DOMove(_baseTransform, new Vector3(0, posY, 0), 0.5f, EasingType.EaseInOutSine);
         }
     }
-    void Start()
-    {
-        
-    }
 
     void Update()
     {

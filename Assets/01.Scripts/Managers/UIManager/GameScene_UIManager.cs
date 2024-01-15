@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameScene_UIManager : MonoBehaviour
+public class GameScene_UIManager : MonoSingletonOneScene<GameScene_UIManager>
 {
     [SerializeField] private RectTransform _gameResultPanel;
     private TextMeshProUGUI _gameResultText;
@@ -23,7 +23,10 @@ public class GameScene_UIManager : MonoBehaviour
     
     public void ShowGameOverPanel()
     {
-        Tweening.Instance.DOMove(_gameResultPanel, Vector2.zero, 1.5f, EasingType.EaseOutElastic);
+        Tweening.Instance.DOMove(_gameResultPanel, Vector2.zero, 1.5f, EasingType.EaseOutElastic, lateAction: () =>
+        {
+            GameManager.Instance.SetTimeScale(0);
+        });
         _gameResultText.text = "죽었네요";
     }
 
@@ -36,5 +39,10 @@ public class GameScene_UIManager : MonoBehaviour
     public void SceneLoad(string SceneName)
     {
         SceneManager.LoadScene(SceneName);
+    }
+
+    public void ResetScale(RectTransform rectTransform)
+    {
+        rectTransform.localScale = Vector3.one;
     }
 }
