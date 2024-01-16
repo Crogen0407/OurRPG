@@ -84,11 +84,7 @@ public abstract class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform.CompareTag("Player"))
-        {
-            other.GetComponent<HealthSystem>().Hp -= damage;
-        }
-        else if (other.transform.CompareTag("PlayerAttack"))
+        if (other.transform.CompareTag("PlayerAttack"))
         {
             healthSystem.Hp--;
         }

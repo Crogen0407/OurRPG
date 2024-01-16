@@ -12,6 +12,8 @@ public class GameScene_UIManager : MonoSingletonOneScene<GameScene_UIManager>
     [SerializeField] private RectTransform _gameResultPanel;
     [SerializeField] private RectTransform _powerUpPanel;
     [SerializeField] private GameObject _levelUpCardPrefab;
+    [SerializeField] private RectTransform _hpBar;
+    
     
     private Transform _cardGroup;
     private TextMeshProUGUI _gameResultText;
@@ -31,6 +33,11 @@ public class GameScene_UIManager : MonoSingletonOneScene<GameScene_UIManager>
         _playerAttack = _gameManager.PlayerAttack;
     }
 
+    public void SetHpBarValue(float value)
+    {
+        _hpBar.localScale = new Vector3(value, 1, 1);
+    }
+    
     public void EnableSettingPanel()
     {
         
@@ -38,7 +45,7 @@ public class GameScene_UIManager : MonoSingletonOneScene<GameScene_UIManager>
     
     public void ShowGameOverPanel()
     {
-        Tweening.Instance.DOMove(_gameResultPanel, Vector2.zero, 1.5f, EasingType.EaseOutElastic, lateAction: () =>
+        Tweening.Instance.DOMove(_gameResultPanel, Vector2.zero, 0.5f, EasingType.EaseOutSine, lateAction: () =>
         {
             _gameManager.SetTimeScale(0);
         });
@@ -47,7 +54,7 @@ public class GameScene_UIManager : MonoSingletonOneScene<GameScene_UIManager>
 
     public void ShowGameClearPanel()
     {
-        Tweening.Instance.DOMove(_gameResultPanel, Vector2.zero, 1.5f, EasingType.EaseOutElastic);
+        Tweening.Instance.DOMove(_gameResultPanel, Vector2.zero, 0.5f, EasingType.EaseOutSine);
         _gameResultText.text = "견뎌냈네요";
     }
 

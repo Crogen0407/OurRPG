@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,6 +51,10 @@ public class Player : MonoBehaviour
             StopCoroutine(DamagedCoroutine());
             StartCoroutine(DamagedCoroutine());
         };
+        HealthSystem.OnHpChangeEvent = () =>
+        {
+            _uiManager.SetHpBarValue(HealthSystem.Hp/HealthSystem.MaxHp);
+        };
         HealthSystem.OnDieEvent = () =>
         {
             GameManager.Instance.GameOver = true;
@@ -62,8 +67,19 @@ public class Player : MonoBehaviour
         Exp = 0;
         _uiManager.ShowPowerUpPanel();
     }
-    
-    
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.transform.CompareTag("Enemy"))
+        {
+            float damage = 1;
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
+                damage = enemy.damage;
+            HealthSystem.Hp -= damage;
+        }
+    }
+
     private IEnumerator DamagedCoroutine()
     {
         SpriteRenderer.material = _damagedMaterial;

@@ -82,7 +82,7 @@ public class GameManager : MonoSingletonOneScene<GameManager>
 
     void Awake()
     {
-        SetTimeScale(10);
+        SetTimeScale(1);
             
         //Controllers
         DataController = FindObjectOfType<DataController>();
