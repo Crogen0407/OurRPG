@@ -51,12 +51,12 @@ public class GameManager : MonoSingletonOneScene<GameManager>
         {
             try
             {
-                _saveData = DataController.Load();
+                _saveData = DataController.Load<SaveData>();
             }
             catch (NullReferenceException e)
             {
                 DataController.Save(new SaveData());
-                _saveData = DataController.Load();
+                _saveData = DataController.Load<SaveData>();
 
             }
             return _saveData;

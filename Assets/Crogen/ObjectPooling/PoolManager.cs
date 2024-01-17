@@ -7,7 +7,7 @@ public class PoolManager : MonoBehaviour
 {
     public static PoolManager Instance;
     Dictionary<string, Queue<GameObject>> poolDic = new Dictionary<string, Queue<GameObject>>();
-    [FormerlySerializedAs("poolingBase")] public PoolingBase PoolingBase;
+    public PoolingBase PoolingBase;
 
     public void Awake()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DataController : MonoBehaviour
 {
-    private SaveData _saveData;
+    private object _saveData;
     private string _filePath;
     private string _jsonData;
     
@@ -13,7 +13,7 @@ public class DataController : MonoBehaviour
         _filePath = Application.persistentDataPath + "/SaveData.json";
     }
 
-    public string Save(SaveData saveData)
+    public string Save<T>(T saveData)
     {
         _saveData = saveData;
 
@@ -28,11 +28,11 @@ public class DataController : MonoBehaviour
         
     }
 
-    public SaveData Load()
+    public T Load<T>()
     {
         FileStream fs = new FileStream(_filePath, FileMode.Open, FileAccess.Read);
         StreamReader sr = new StreamReader(fs);
-        SaveData saveData = JsonUtility.FromJson<SaveData>(sr.ReadToEnd());
+        T saveData = JsonUtility.FromJson<T>(sr.ReadToEnd());
         sr.Close();
 
         _saveData = saveData;

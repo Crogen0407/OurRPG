@@ -65,7 +65,7 @@ public class BishojyoDataController : MonoBehaviour
             userName = "Crogen",
             currentStoryIndex = 0
         });
-        currentBishojyoContainer = bishojyoContainers[_dataController.Load().currentStoryIndex];
+        currentBishojyoContainer = bishojyoContainers[_dataController.Load<SaveData>().currentStoryIndex];
 
         _textController.chatWindow.gameObject.SetActive(false);
         IsEndStory = false;
