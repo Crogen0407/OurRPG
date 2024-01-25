@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Crogen.ObjectPooling;
 using UnityEngine;
 
 public class SnowBall : Enemy
@@ -20,7 +21,7 @@ public class SnowBall : Enemy
         while (!_gameManager.GameOver)
         {
             yield return new WaitForSeconds(0.25f);
-            _poolManager.Pop("vfx_Snow", transform.position + Vector3.down * 0.75f, Quaternion.identity);
+            gameObject.Pop("vfx_Snow", transform.position + Vector3.down * 0.75f, Quaternion.identity);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Crogen.ObjectPooling;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -38,13 +39,11 @@ public class EnemySpawnController : MonoBehaviour
     
     //Managements
     private GameManager _gameManager;
-    private PoolManager _poolManager;
     
     private void Awake()
     {
         _spawnPoints = _enemySpawnTransform.GetComponentsInChildren<Transform>();
         _gameManager = GameManager.Instance;
-        _poolManager = PoolManager.Instance;
      
         //Data
         _stageData = _gameManager.stageData;
@@ -78,7 +77,7 @@ public class EnemySpawnController : MonoBehaviour
     {
         int randomPos = Random.Range(1, _spawnPoints.Length);
         int randomEnemy = Random.Range(0, _enemyTypes.Length);
-        GameObject obj = _poolManager.Pop(_enemyTypes[randomEnemy], _spawnPoints[randomPos].position, Quaternion.identity);
+        GameObject obj = gameObject.Pop(_enemyTypes[randomEnemy], _spawnPoints[randomPos].position, Quaternion.identity);
         currentEnemies.Add(obj.GetComponent<Enemy>());
     }
     private void TimeChange()

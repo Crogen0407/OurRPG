@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Crogen.ObjectPooling;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -26,13 +27,11 @@ public abstract class Enemy : MonoBehaviour
     private EnemySpawnController _enemySpawnController;
         
     //Managements
-    protected PoolManager _poolManager;
     protected GameManager _gameManager;
     
     private void OnEnable()
     {
         //Managements
-        _poolManager = PoolManager.Instance;
         _gameManager = GameManager.Instance;
         
         //Controllers
@@ -60,7 +59,7 @@ public abstract class Enemy : MonoBehaviour
             {
                 Instantiate(dieEffect, transform.position, Quaternion.identity);
             }
-            _poolManager.Push(enemyType, gameObject);
+            gameObject.Push(enemyType);
             _gameManager.CheckGameClear();
         };
         healthSystem.OnHpDownEvent = () =>
